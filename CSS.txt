@@ -1,0 +1,207 @@
+CSS：  层叠样式层，级联样式层，样式层！
+作用：     修改页面中 元素的显示样式   ；  实现内容与表现的分离   ；  提高代码的重用性和维护性；
+关系：     HTML构建，    CSS 化妆 美化
+
+CSS样式表使用方法：   内联样式（行为样式） 内部样式表    外部样式表
+CSS样式特征：	  1    继承性。   2，层叠性   3， 优先性   4，！important   手动调整样式属性的优先级
+CSS基础选择器：         1， 基础选择器（通用选择器）     *{ }；   定义网页中最基本样式， 字体，大小
+		  2,   元素选择器  html文档中的元素        img {   };     改变元素默认样式
+		  3， 类选择器     定义一组元素的通用样式       注：！ 类名不能以 数字 开头    ！
+		  4， 分类选择器  将类选择器和元素选择器结合   针对某种元素 不同的类 进行控制
+		  5， id选择器      定义某一元素的固定样式         #idName     
+		  6,   群组选择器    群组选择器中用  ， 隔开不同选择器列表       div,span{     }
+		  7， 后代选择器   匹配到某个元素中的所有的某个元素         div p{  }
+ 		  8， 自打选择器   两个元素的关系只能是 父子     div>span>i{   }
+		  9， 伪类选择器   根据某一元素的不同状态来进行 样式声明      
+			  分类：
+			          链接伪类：  :link 适用尚未访问的链接      :visited  访问过后的链接				            	          动态伪类：  :hover  适用于鼠标悬停在元素上      
+				            :active  元素被激活， 按下没释放
+				            :focus   元素获取焦点时，多数用于文本框
+				   a:hover{ color:red; text-decoracion: underline;}  有下划线
+				link, visited,  hover, active,  需要按照顺序设置，不然有bug
+		  10，  id选择器优先级 > 类选择器 > 标签选择器 
+CSS基础属性	   1， 颜色单位  rgb     透明   rgba(255,0,0,0.5)     #e4393c 京东红
+		   2,   尺寸         宽度 width mix-width  max-width   高度  height  min-height/max
+		   3,   溢出处理   overflow： 当内容溢出元素框，如何处理
+			         overflow：visible   溢出可见    默认   
+			         overflow：hidden  溢出隐藏 （内容被修剪，多余内容不可见）
+			         overflow：scroll    设置滚动条 (内容被修剪，但浏览器会以滚动显示出)
+			         overflow：auto     自动，如果内容修建，则浏览器显示滚动条
+		                         overflow-x : 横向溢出处理方式         overflow-y : 纵向溢出处理方式
+		    4，边框	         border：  1px  solid  color;    设置元素四个边框， 宽度，样式 颜色
+				   style 线条选择： dotted 点状线框   double 定义双线   solid 实线
+				   单边定义    border-left/top/bottom/right:  width style color;
+		    5， 边框倒角       边框圆角      border-radius:    顺时针设置四个角     px单位
+			              单边设置      border-left-top-radius:   左上角
+		    6， 边框阴影    box-shadow: h-shadow v-shadow blur spread color inset 
+			             v-shadow : 垂直阴影位置              blur : 可选，模糊距离
+               			             spread : 可选， 阴影的尺寸           color : 可选，阴影颜色
+	                                             inset : 可选值,将外部阴影修改为内部阴影                   
+			             box-shadow:5px 5px 5px 10px red;
+	   		             box-shadow:-3px -10px 5px #f00;
+		    7， 图片边框      border-image:        
+				border-image-source : 图片路径
+				border-image-slice：图片边框向内偏移?
+				border-image-width:图片边框的宽度
+				border-image-outset：边框图像区域超出边框的量
+				border-image-repeat : 边框的平铺方式
+				取值:     repeat 平铺， round 铺满，   stretch  拉伸
+				border-image:source slice repeat;
+		     8， 轮廓   	outline：  width  style  color   ；   宽，样式，颜色
+
+CSS重点属性
+		     1， 框模型 
+			元素实际宽：  外边距 + 边框+ 内边距 + 宽度 
+		     2， 外边距     margin
+			外绕在元素边框周围的空白区域 为 外边距 
+			统一设置四方向外边距    margin: value;    
+			单方向设置外边距           margin-left: value;
+			margin：value(四个方向)       margin:value(上下) value(左右);
+			margin:value(上) value(左右) value(下)         顺时针
+			margin 取值：       px        百分比         
+			           auto   左右设置 auto，  当前元素 在它外层容器中就会水平居中
+			外边距合并：    当两外边距相遇，将形成一个 外边距，  值  取最大的一个。
+			外边距问题：   内外嵌套 div元素， 内层设置 div的margin-top  默认会作用于父元素的 margin-top上，内层无效果，
+			   可以给外层元素添加边框解决。或者通过外层元素的上内边距去实现
+		
+		        3，内边距    padding
+			 内容区域与边框之间的空间
+			 特点：  一旦设置内边距，会扩大整个元素区域
+			 属性：   	padding : value; 上下左右     padding : value(上下) value(左右);
+      				padding : value value value;      padding : value value value value;
+			
+		         4， CSS重写/重置
+			   *{       }	 
+        
+		         5， 背景     
+			   背景颜色  background-color：color；
+			   背景图片	  background-image: url(图片路径)
+			   背景重复  background-repeat: no-repeat;    
+				  repeat : 默，垂直和水平都平铺         repeat-x : 仅在水平方向平铺
+				    repeat-y : 仅在垂直方向平铺        no-repeat : 不平铺，仅显示一次
+			   背景图固定    background-attachment ：  scroll; 默，滚动定位。 fixed；固定
+			   背景定位     background-position ：   x% y%,水平位置，垂直位置
+					x为正，向右移动，   为负 向左
+					left，right ，top，bottom  center：居中（x,y）
+			    合并写法   background:color url() repeat attachment position
+				    background:url() repeat position
+				   
+		            6,   渐变色     多个颜色值 之间平缓过度
+			     渐变类型：   线性渐变，   径向渐变    重复渐变
+			      注！！！  所有渐变 都通过    background-image 设置
+			      线性：    linear-gradlient   重复线性： repeating-linear-gradient
+			      径向：    radial-gradient    重复径向： repeating-radial-gradient
+			      1，线性： linear-gradient:(angle,color-point1,color-point2,...)
+				    angle取值：   关键词    to top  to bottom to right
+				     角度    0deg --> to top      
+					90deg --> to right
+					180deg --> to bottom
+				      color-point:  渐变色的开始点 ，中间过渡点，结束点
+			     	       取值：      red 0%    开始显示红色
+					       green 50%   到 50 绿色   blue 100%   结尾处 蓝色
+			       2， 径向：radial-gradient([size at position,]color-point1,color-point2, ....)
+  				size at position :     
+				size : 放射的圆形的半径     size : 放射的圆形的半径; left/center/top
+		  	       3,   重复渐变：    background-image:repeating-linear-gradient(to bottom,red 0,green 10px);
+				
+		                       4， 浏览器兼容性
+				对不支持 的版本   通过前缀 可 实行
+				firefox：   -moz-     chrome，safari ：  -webkit-
+				opera ：   -o- 
+			background-image:-webkit-linear-gradient(to bottom,red,green); Chrome Safari		
+
+CSS中的 控制字体 
+			        1， 控制字体
+				font-family  :  value，value ，value.....   "微软雅黑","Arial"
+			        2,    字体大小
+				font-size :  12px;      网页中，默认文字一般采用12px
+			        3，  字体加粗    == <b>
+				font-weight :  normal / bold / value; 
+				value  :   400- 900       400==normal    900== bold
+			        4,     字体样式
+				相当于 <i>      font-style : normal / italic ;
+				字体是否有下划线     text-decoration:  none /  underline;
+			        5,     小型大写字母
+				 font-variant : normal / small-caps;  
+			        6，   字体属性：  font   简写属性    6个值
+				 font : font-style font-variant font-weight font-size font-family;
+     				 font : font-style font-variant font-weight font-size/line-height font-family;
+			        7，    颜色  color：value；  文字水平排列方式 text-align: left/right/center	 文本线条修饰 text-decoration: line-through(删除线)   overline(上划线)     line-height(一行数据垂直居中)，     首行缩进   text-indend: value;        文本阴影：  text-shadow： h-shadow,v-shadow,blue,color;      
+			        8,     文本溢出处理
+				       widte-space : normal / nowrap   文本过长，是否要换行
+					             normal 采用浏览器默认设置，   nowrap  不换
+				       text-overflow 文本溢出，必须与overflow white-space连用
+					clip      裁减，  拦腰截断
+					ellipsis    通过 。。。来表示未显示内容
+				   word-wrap长单词换行，用来标明是否允许浏览器在单词内进行断句 
+					normal 默认 ，不破坏     break-word  破坏单词结构
+				    work-break：  文本换行  表明怎样进行单词内断句
+					normal ：      浏览器默认换行
+					keep-all      只能在半角空格，字符处换行
+
+CSS  定位 		position     left  + 向右 - 向左  top + 向下 - 向上  right： +向左 - 向右  bottom + 上 -下
+	  	1， 普通流定位  （文档流）   默认的定位方式 static
+		2， 浮动定位     将元素排除在普通流在外，元素不占用空间；  
+			      浮动元素默认不重叠，  只能左右浮动， 所有元素设置浮动，转换为 块级元素
+			     float：  none（无浮动，默认）；left  ；right；
+			    一容器中，有浮动，尽量让容器内所有元素都浮动，下一行不浮动，单独用容器
+		                    清除浮动     clear： left；right； both（左右）
+		3， 相对定位      position： relative;    left:0px; right:0px,top:0px;bottom:0px
+		4,    绝对定位      position：absolute； ~~~同上
+		5， 固定定位       postion：fixed
+		6， 堆叠顺序       z-index：  value；   页面元素层叠后，数值大显示前，小显示后，
+CSS 显示 
+		1，显示方法     display： none     生成元素隐藏，元素所有内容不显示，不占据文档空间
+				      block    块，  元素变成块元素一样显示
+				      inline    让任何一个怨怒是像  行内元素一样 显示
+				      inline-block   行内快，   想改变行内元素的宽高时候用
+			       visibility：visible    默认，元素可见。
+				      hidden   元素隐藏， 占据空间
+			       	      collapse  表格元素中用，  删除一行或一列
+			       opacity：    0 -- 1   设置元素 透明度    0完全透明  1不透明 
+			       vertical-align       垂直对齐方式   
+				      top    middle    bottom      baseline：基线对齐（默认）
+			      cursor：    光标      鼠标  ；      help    ？    pointer  手状
+				   default  默认   crosshair  瞄准线+  text  l   wait  等待  	
+
+CSS 列表		1， 列表样式    list-style-type
+			       无序：  none 无标记   disc 实心圆 circle 空心圆  square  实心矩形
+			       有序;     none 无标记   decimal  数字   lower-roman  小写罗马   upper-roman大写
+		2， 列表项图像     list-style-image   :  url(xxx/xxx.jpg)
+		3， 列表项位置     list-style-position ： outside 默认 标示在外    inside  标示在内
+			合并 ： list-style ：  type  url()  position        list-style: none; 取消列表标识
+	
+				 
+
+CSS 动画/转换
+		1， 转换：  就是改变元素一些状态，大小，位置，形状
+		2， 转换属性：   transform: none (不转换) /   transform-function(要转换的函数);
+		       	         ：rotate(旋转)    ：translate(位移)   ：scale(缩放)
+		3， 转换原点：   转换过围绕的中心点，默认下，原点在整个元素的中间处。
+			         transform-origin ;
+			         取值：     数值以 左上方 的点 为 （0,0）再计算其他点
+			         	       元素中心点(50%,50%),left right top bootom  center
+		4，2d位移          function : translate(x,y)       translateX  translateY
+		5，2d缩放	         function ： scale（value）  （x，y）
+		6，2d旋转          function ：rotate（deg） 0-360  度  +顺时针  -逆时针
+		7，3d转换          浏览器兼容   -webkit-prespective：100px；
+			         transform:(deg)  x,y,z  三个角度
+			         translate: (x,y,z) (z)
+		8，过度	     元素从一个状态到 另外一个状态的平滑变化叫  过渡
+		     过渡属性   transition-property :  none | all  | property 
+		     过渡时间   transition-duration :  1s;     如果 过渡为 0 ； 无过度效果; 
+		     过度函数   transition-timing-function:  
+			       ease默认，慢开加速满结      linnar  均速     ease-in 慢开， 加速
+			       ease-out  慢结，由快到慢    ease-in-out  慢开 加速  慢结束
+		     过度延迟   transition-delay    
+		     统一设置过渡 ：   transition :  过渡属性 过渡时间 过渡函数 过渡延迟
+
+		9，动画 
+		     兼容性      谷歌 safari    -webkit-    firefox -moz-  opera -o- 
+		     声明动画    @keyframes            调用动画      animation   调用声明的动画
+		     关键帧     @keyframes {  from 10% { 动画开始样式 }  100%{ 动画结束样式 } }
+		     动画属性    animation-name 调用动画名称 指定 @keyframe的名字
+			      animation-duration   调用动画用的时间
+			      animation-timing-function  动画执行速度
+			      animation-delay    延迟时间   
+			      animation-iteration-count     动画执行次数

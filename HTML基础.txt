@@ -1,0 +1,51 @@
+  URL： 统一资源定位符
+  HTML：超文本标识
+  1. Head部分：
+	定义的内容在网页内不可见，用于定义标题等附加信息
+  2. <meta>标签;
+	作用a： 定义网页的附加信息： 作者，关键字等。
+	作用b： 定义和http协议相关信息： 字符集等。
+	            <meta charset="utf-8">  防止中文乱码 
+  3. Body部分：
+	特殊字符     &nbsp; 空格   &Lt; <    &gt; >     &copy; 版权   &trade;   TM          &hearts;    心形
+
+	有序列表  ,<ol type=" "></ol>  1：数字(默认)  a：小写 A：大写 i：小写罗马数     I：大写罗马数  
+       	无序列表  <ul type=" "></ul>   disc：实心圆（默）circle：空心圆 square：实心矩形
+
+	图片 ： <img scr="xx.png" width="宽" height="高" align="对其方式" border="边框" alt="描述信息">
+	
+	超链接： <a href="" target="打开链接的目标位置"> 
+	_self(当前位置)   blank(新网页打开）
+	
+	<b></b> 加粗字体  <i></i> 字体倾斜  <u></u> 字体下划线  <s></s>字体删除线
+	<sup></sup> 字体上标       <sub></sub> 字体下标
+	<hr/>  水平分割线  属性： size：线的粗短 10px; width：宽；   align： 线的对齐方法  color
+	
+	预格式化：    保留源文档中的空格和回车      <pre></pre>
+	
+	锚点：  在页面任意位置定义一个标识， 随时都可跳转到标识上。
+	         a：定义锚点
+		<a name="name"></a>
+	         b:  链接到锚点
+		<a href="#name">文本或图像</a>
+		<a href="url#name"></a>
+	         c:  返回页面的空链接
+		<a href="#" > 返回顶部</a>
+
+		表格
+	<table>
+	      <tr>  一行
+		<td>一格</td>
+	      </tr>
+	</table>
+	
+		表单
+	文本框        <input type="text"> 值写错也是显示成文本框
+	密码框	  <input type="password"> 
+	单选框        <input type="radio"   name="名字" value="值"  checked(默认被选中)>
+	复选框        <input type="checkbox"  checked(默认被选中)>
+	按钮框	  <input type="submit  (提交按钮) / reset(重置按钮) / button(普通按钮) " value="按钮上的字"> 
+	文本选择框   <input type="file">
+	下拉列表	   <select>     <option></option>        </select> 
+		   属性：name 定义名字 ，   size: 大于1 ,滚动效果  multiple:设置多选   value:选项值 selected 预选中
+	多行文本域:    <textarea></textarea>

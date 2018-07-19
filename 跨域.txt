@@ -1,0 +1,32 @@
+1.  什么是跨域？
+     一个域下的文档或脚本试图去请求另一个域下的资源（广义）。
+        a：资源跳转：  A链接  重定向  表单提交
+        b：资源嵌入： <link>,<script>,<img>,<frame>等dom标签，还有样式中background：url（）等文件外链。
+        c：脚本请求：  js发起的  Ajax 请求，dom和js对象的跨域操作等。
+
+     由浏览器同源策咯限制的一类请求场景。（狭义）
+         同源策略/SOP 是一种约定，是浏览器最核心最基本的安全功能，少了它，浏览器容易收到攻击。   同源是指 “协议+域名+端口“ 三者都相同。
+
+2.  跨域解决方 法
+     1.  通过jsonp跨域
+	优点：  JSONP 没有同源策略限制，兼容性好，不需要XHR或ActiveX的支持，请求完毕后可通过调用 callback的方式回传结果。
+	 缺点： 只支持GET请求，只支持跨域HTTP请求。不能解决不同域的两个页面之间如何进行JS调用的问题。
+	
+     2.  document.domain + iframe跨域（只适用于不同子域名的框架的交互）
+     3.  location.hash + ifarme（利用loaction.hash来传值）
+     4.  window.name + iframe跨域
+     5.  postMessage跨域
+     6.  跨域资源共享(CORS)
+           基本思想： 使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。    兼容IE10以上。 
+	实现CORS通信的关键是服务器，服务器实现了CORS接口，就可以跨域通信。
+           CORS与JSONP区别
+               a： JSONP只能实现GET请求，CORS支持所有类型的HTTP请求。
+               b： CORS，开发者用普通XMLHttpRequeset发起请求，比JSONP有更改好的错误处理
+               c：  JSONP主要被老的浏览器支持，现在主流都支持了CORS。
+               d：  CORS比JSONP，更加先进，方便，可靠。
+       
+     7.  nginx代理跨域
+     8.  node.js中间件代理跨域
+     9.  WebSocket协议跨域 
+           是一种浏览器的API，他的目标是一个单独的持久连接上提供双全工，双向通信（同源策略对它不适用）
+           原理：  JS创建 web socket后，会有一个http请求发送到浏览器建立链接，取得服务器响应后，建立的链接会使用http升级从http协议交换为 web socket协议。           只有支持web socket协议的服务器上才能正常工作。

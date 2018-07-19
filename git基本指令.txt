@@ -1,0 +1,52 @@
+      先安装
+      git config     设置控制 Git 外观和行为的配置变量
+      git config --global user.name "name"    设置名字
+      git config --global user.email email@qq.com  设置邮箱
+      git config --global core.editor Vim 文本编辑器（emacs）
+      git config --list    列出所有Git当时能找到的配置
+      git config user.name 通过 git config <key> 检查Git 的某一项配置
+
+想下载代码的路径，点击鼠标右键选择 Git Bash here（代码格式纯英文）
+指令：
+       mkdir  xxxx    创建新仓新
+       ls	             查看当前目录有哪些文件和文件夹
+       cd    xxx          进入文件夹    输入命令时，可用 Tab 自动补全
+       git init            初始化 Git仓库   ls -a查看当前目录， 多了一个 .git 它保存了保本控制的所有信息
+      echo  "文本信息" > name.txt   创建 name.txt文件
+      git status          查看当前版本库状态， Untracked files（为跟踪文件）红色，未被 Git管理    
+      git config --global core.quotepath false    防止中文乱码
+      git add  name.txt   将文件加入缓冲区
+      git add -A         	    上传次目录所有文件
+      git add  .                加入所有修改
+      git commit -m  "提交信息"     提交修改后的信息
+      git log                    查看历史提交记录
+      git diff                    查看改变
+      git checkout --       撤销更改
+      git reset --hard 版本号前七位    版本回退/恢复版本
+      git reflog 查看之前的版本
+      git clean -xf           删除未跟踪没上传的文件
+      git branch              查看当前分支
+      git checkout -b aaa    创建一个叫 aaa 的分支
+    
+      本地git 与  远程 github 关联
+      1.   git Base 设置   
+	git config --global user.name "用户名字"
+	git config --global user.email "用户邮箱"
+      2.    修改 .gitconfig 文件
+	路径：C\users\用户名\.gitconfig
+      3.    生成  ssh key  
+	ssh-keygen -t rsa -C "用户邮箱"
+                复制  ssh key       clip <~/.ssh/id_rsa.pub  (自动复制ssh key)
+      4.     连接github   
+                GitHub<setting< ssh key < 新建     
+	测试是否链接成功     ssh -T git@github.com    
+      5.     本地库 关联 GitHub   
+	 git remote add origin 你github的地址
+      6.     上传文件
+	  创建库(repository)时，添加了 README.md或 LICENSE, GitHub会拒绝访问          解决办法  git pull origin master
+	  平常上传   ---    git push -u origin master  （以后git push）  
+	   有警告，不影响结果。   因为没有指定分支
+	   git config --global push.default matching 或者 git config --global push.default simple命令   
+	push.default设置maching的意思是：git push 会把你本地所有分支push到名称相对应的远程主机上。这意味着可能你会在不经意间push一些你原本没打算push的分支。
+
+push.default设置成simple的意思是：git push仅仅把当前所在分支push到从当初git pull pull下来的那个对应分支上，另外，这个过程也会同时检查各个分支的名称是否相对应。
